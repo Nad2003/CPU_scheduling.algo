@@ -1,0 +1,67 @@
+//NADEEM
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int n=0,j,temp=0,ans=0,count=0,tq;
+        System.out.println("ENTER THE NUMBER OF PROCESS");
+        n=s.nextInt();
+        
+        int[] rem_bt=new int[n];
+        int[] bt=new int[n];
+        int[] wt=new int[n];
+        int[] tat=new int[n];
+        float atat=0,awt=0;
+System.out.println("ENTER THE TIME QUANTOME");
+ tq=s.nextInt();
+System.out.println("ENTER THE BURST TIME OF PROCESS");
+for(int I=0;I<n;I++){
+System.out.print("p   "+(I+1)+":    ");
+bt[I]=s.nextInt();
+rem_bt[I]=bt[I];
+}
+while(true){
+    for(j=0,count=0;j<n;j++){
+        temp=tq;
+        if(rem_bt[j]==0){
+            count++;
+            continue;
+        }
+        if(rem_bt[j]>tq)
+            rem_bt[j]=rem_bt[j]-tq;
+        
+        else if(rem_bt[j]>=0){
+            temp=rem_bt[j];
+            rem_bt[j]=0;
+        }
+        ans=ans+temp;
+        tat[j]=ans;
+        
+    }
+        
+    
+        if(n==count){
+            break;
+        }
+    
+}
+for(int I=0;I<20;I++){
+    if(I==19){
+System.out.print("*");
+    }else
+System.out.print("*-");
+}
+for(int I=0;I<n;I++){
+    wt[I]=tat[I]-bt[I];
+    awt+=wt[I];
+    atat+=tat[I];
+}
+for(int I=0;I<n;I++){
+System.out.print("\t\tBT\t"+bt[I]+"\tWT\t\t"+wt[I]+"\tTAT\t\t"+tat[I]);
+}
+System.out.println("AVERAGE TAT IS  "+atat/n);
+System.out.println("AVERAGE WT IS  "+awt/n);
+        
+        
+    }
+}
